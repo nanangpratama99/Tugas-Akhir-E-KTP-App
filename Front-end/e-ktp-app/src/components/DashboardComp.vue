@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="!success">
+    <div>
       <!-- CARD START -->
       <div class="cards">
         <div class="jkk shadow"><span class="ico-card-2 material-symbols-outlined">
@@ -30,7 +30,7 @@
             <th scope="col">Alamat</th>
             <th scope="col">Kota</th>
             <th scope="col">Kode Pos</th>
-            <th scope="col">Action</th>
+            <th scope="col" class="text-center">Action</th>
           </tr>
         </thead>
         <tbody v-if="kartuKeluargaData.length > 0">
@@ -40,7 +40,7 @@
             <td>{{ item.alamat }}</td>
             <td>{{ item.kabupaten_kota }}</td>
             <td>{{ item.kode_pos }}</td>
-            <td>
+            <td class="text-center">
               <!-- BUTTON -->
               <router-link :to="{ path: '/detailKK/' + item.nomor_kk }">
                 <button class="btn btn-success" type="submit">Detail</button>
@@ -62,16 +62,16 @@
       </table>
     </div>
     <!-- TABLE END -->
-    <div v-show="success">
+    <!-- <div v-show="success">
       <Success :propsAlert="textAlert"></Success>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import kartuKeluargaServices from "@/services/kkServices";
 import anggotaKeluargaServices from "@/services/anggotaKeluargaServices";
-import Success from "./Success.vue";
+// import Success from "./Success.vue";
 
 export default {
   name: "DashboardS",
@@ -80,14 +80,10 @@ export default {
     return {
       kartuKeluargaData: [],
       anggotaKeluargaData: [],
-      success: false,
       textAlert: '',
     };
   },
 
-  components: {
-    Success
-  },
 
   methods: {
     // METHOD GET ALL DATA KK
@@ -118,22 +114,37 @@ export default {
 
     // METHOD DELETE KK
     deleteKK(id) {
-      if (confirm(`Yakin Ingin menghapus data ini ?`)) {
-        kartuKeluargaServices
-          .deleteKartuKeluarga(id)
-          .then((response) => {
-            console.log(response.data);
-            this.textAlert = 'Dihapus';
-            this.success = true;
-          })
-          .catch((e) => {
-            console.log(e);
+      this.$swal({
+        title: 'Hapus',
+        text: 'Apakah anda Yakin Menghapus data kartu Keluarga',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: "Ya Hapus!",
+        cancelButtonText: "Jangan Dihapus!",
+        showLoaderConfirm: true,
+      }).then((result) => {
+        if (result.value) {
+          this.$swal(
+            "Delete",
+            "Berhasil Menghapus data Kartu Keluarga!"
+          ).then(function () {
+            window.location.reload();
           });
-      } else {
-        alert("Hapus Dibatalkan");
-      }
+          kartuKeluargaServices
+            .deleteKartuKeluarga(id)
+            .then((response) => {
+              console.log(response.data);
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        } else {
+          this.$swal("Batal", "Hapus Dibatalkan!");
+        }
+      })
     },
   },
+
 
   mounted() {
     this.getKK();
@@ -274,6 +285,9 @@ h3 {
 .delete {
   font-size: 20px;
 }
+
+/* Tabel */
+
 
 /*  */
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="form-add" v-show="!success">
+        <div class="form-add">
             <h4 class="mt-4 title shadow">
                 <img class="anggota-ico" src="../assets/anggota-blue.svg" alt="">Daftar Anggota Keluarga
             </h4>
@@ -25,7 +25,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Jenis Kelamin</th>
                         <th scope="col">Kepala Keluarga</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody v-if="anggotaKeluargaData.length > 0">
@@ -35,13 +35,10 @@
                         <td>{{ item.nama }}</td>
                         <td>{{ item.jenis_kelamin }}</td>
                         <td>{{ item.kepala_keluarga }}</td>
-                        <td>
+                        <td class="text-center">
                             <router-link :to="`/detailKK/${item.id}/listAnggota/detailAnggota`">
                                 <button class="btn btn-tambah">Detail</button>
                             </router-link>
-                            <!-- <router-link to="">
-                                <button class="btn btn-tambah" @click="isiForm(item.id)">Detail</button>
-                            </router-link> -->
 
                             <button class="btn btn-danger" type="submit" @click="deleteAnggota(item.id)">Hapus</button>
                         </td>
@@ -58,7 +55,7 @@
             <!-- TABLE END -->
 
             <!-- FORM TAMBAH ANGGOTA -->
-            <b-modal id="modal-prevent-closing" ref="modal" title="Silahkan Tambahkan Anggota" ok-title="Submit"
+            <b-modal id="modal-prevent-closing" ref="modal" title="Silahkan Tambahkan Anggota" ok-title="Kirim"
                 cancel-title="Tutup" @ok="handleOk" @submit="getIdKK">
                 <div class="row">
                     <!-- INPUT KIRI -->
@@ -131,29 +128,19 @@
             </b-modal>
             <!-- FORM END -->
         </div>
-        <div v-show="success">
-            <Success :propsAlert="textAlert"></Success>
-        </div>
     </div>
 </template>
 
 <script>
 import anggotaKeluargaServices from '../services/anggotaKeluargaServices'
-import Success from '../components/Success.vue'
 
 export default {
     name: "FormAnggota",
-    components: {
-        Success
-    },
 
     data() {
         return {
-            anggotaKeluargaData: null,
-            success: false,
-            textAlert: '',
+            anggotaKeluargaData: [],
             validasiKK: false,
-
             anggotaData: {
                 nik: null,
                 agama: null,
@@ -173,7 +160,6 @@ export default {
             this.getIdKK();
             let data = this.anggotaData;
             let id = this.anggotaData.id;
-            // let id = this.$route.params.id;
             let route = this.$route.fullPath;
 
             if (route === `/updateAnggota`) {
@@ -188,8 +174,15 @@ export default {
                 anggotaKeluargaServices.create(data)
                     .then((response) => {
                         console.log(response.data);
-                        this.textAlert = 'Disubmit '
-                        this.success = true;
+                        this.$swal({
+                            position: 'top',
+                            icon: 'success',
+                            title: 'Data Kartu Keluarga Telah Dikirim !',
+                            showConfirmButton: true,
+                            timer: 2000
+                        }).then(function () {
+                            location.reload();
+                        })
                     })
                     .catch((e) => {
                         let errorEntry = e.response.data.trace.includes("Duplicate entry");
@@ -222,18 +215,35 @@ export default {
 
 
         deleteAnggota(id) {
-            if (confirm(`Yakin Ingin menghapus data ini ?`)) {
-                anggotaKeluargaServices.deleteAnggotaKeluarga(id)
-                    .then((response) => {
-                        console.log(response.data);
-                        location.reload();
-                    })
-                    .catch((e) => {
-                        console.log(e);
+            this.$swal({
+                title: 'Hapus',
+                text: 'Apakah anda Yakin Menghapus data Anggota Keluarga',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: "Ya Hapus!",
+                cancelButtonText: "Jangan Dihapus!",
+                showLoaderConfirm: true,
+            }).then((result) => {
+                if (result.value) {
+                    this.$swal(
+                        "Delete",
+                        "Berhasil Menghapus data Anggota Keluarga!"
+                    ).then(function () {
+                        window.location.reload();
                     });
-            } else {
-                alert("Hapus Dibatalkan");
-            }
+                    anggotaKeluargaServices
+                        .deleteAnggotaKeluarga(id)
+                        .then((response) => {
+                            console.log(response.data);
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
+                } else {
+                    this.$swal("Batal", "Hapus Dibatalkan!");
+                }
+            })
+
         },
 
         isiForm(id) {

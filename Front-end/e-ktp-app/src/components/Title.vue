@@ -2,14 +2,18 @@
     <div>
         <div>
             <h3 class="mt-4 shadow title" v-show="TitleName == `Home`">
-                <img class="home" src="../assets/home-blue.svg" alt="">Homepage
+                <img class="icon" src="../assets/home-blue.svg" alt="">Homepage
             </h3>
             <h3 class="mt-4 shadow title" v-show="TitleName == `Addkk`">
-                <img class="home" src="../assets/tambah-angota-blue.svg" alt="">Tambah Kartu Keluarga
+                <img class="icon" src="../assets/tambah-angota-blue.svg" alt="">Tambah Kartu Keluarga
             </h3>
             <h3 class="mt-4 shadow title" v-show="TitleName == `Anggota`">Daftar Anggota Keluarga</h3>
-            <h3 class="mt-4 shadow title" v-show="TitleName == `DetailKK`">Detail KK</h3>
-            <h3 class="mt-4 shadow title" v-show="TitleName == `DetailAnggota`">Detail Anggota Keluarga</h3>
+            <h3 class="mt-4 shadow title" v-show="TitleName == `DetailAnggota`">
+                <img class="icon" src="../assets/detail-anggota-keluarga-blue.svg" alt="">Detail Anggota Keluarga
+            </h3>
+            <h3 class="mt-4 shadow title" v-show="TitleName == `DetailKK`">
+                <img class="icon" src="../assets/detail-kk-blue.svg" alt="">Detail Kartu Keluarga
+            </h3>
         </div>
     </div>
 </template>
@@ -39,7 +43,7 @@ export default {
     width: 96%;
 }
 
-.home {
+.icon {
     width: 4%;
     margin-bottom: 6px;
     margin-right: 5px;

@@ -2,7 +2,7 @@
     <!-- TABLE START -->
     <table class="table mt-3 table table-striped shadow">
         <thead>
-            <tr class="text-center">
+            <tr class="">
                 <th scope="col">No</th>
                 <th scope="col">Nomor KK</th>
                 <th scope="col">NIK</th>
@@ -16,13 +16,13 @@
         <tbody v-if="anggotaData.length > 0">
             <tr v-for="(item, index) in anggotaData" :key="index">
                 <th scope="row" class="text-center">{{ index + 1 }}</th>
-                <td style="width:100px">{{ item.nik }}</td>
-                <td>{{ item.id_kk }}</td>
+                <td style="width:100px">{{ item.id_kk }}</td>
+                <td>{{ item.nik }}</td>
                 <td>{{ item.nama }}</td>
                 <td>{{ item.agama }}</td>
                 <td>{{ item.pendidikan }}</td>
                 <td style="width:150px">{{ item.jenis_kelamin }}</td>
-                <td>
+                <td class="text-center">
                     <button class=" btn btn-danger" type="submit" @click="deleteAnggota(item.id)">Hapus</button>
                 </td>
             </tr>
@@ -64,20 +64,37 @@ export default {
         },
 
         deleteAnggota(id) {
-            if (confirm(`Yakin Ingin menghapus data ini ?`)) {
-                anggotaKeluargaServices.deleteAnggotaKeluarga(id)
-                    .then((response) => {
-                        console.log(response.data);
-                        location.reload();
-                    })
-                    .catch((e) => {
-                        console.log(e);
+            this.$swal({
+                title: 'Hapus',
+                text: 'Apakah anda Yakin Menghapus data Anggota Keluarga',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: "Ya Hapus!",
+                cancelButtonText: "Jangan Dihapus!",
+                showLoaderConfirm: true,
+            }).then((result) => {
+                if (result.value) {
+                    this.$swal(
+                        "Delete",
+                        "Berhasil Menghapus data Anggota Keluarga!"
+                    ).then(function () {
+                        window.location.reload();
                     });
-            } else {
-                alert("Hapus Dibatalkan");
-            }
+                    anggotaKeluargaServices
+                        .deleteAnggotaKeluarga(id)
+                        .then((response) => {
+                            console.log(response.data);
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
+                } else {
+                    this.$swal("Batal", "Hapus Dibatalkan!");
+                }
+            })
         },
     },
+
 
     mounted() {
         this.getAll()
@@ -93,10 +110,6 @@ export default {
 
 thead tr th {
     font-weight: 600;
-}
-
-td {
-    border: 0.5px solid rgb(42, 42, 42);
 }
 
 thead {

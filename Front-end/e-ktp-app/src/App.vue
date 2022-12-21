@@ -15,4 +15,13 @@ export default {
 .input-field::-webkit-outer-spin-button {
   display: none;
 }
+
+thead {
+  background: #4B56D2;
+  color: whitesmoke;
+}
+
+th {
+  font-weight: 500;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="form-add">
         <!-- Button -->
-        <router-link to="/home" v-show="!success">
+        <router-link to="/home">
             <button class="btn btn-success mt-4 shadow"><span class="material-symbols-outlined small">
                     arrow_back_ios
                 </span>Back
@@ -21,7 +21,7 @@
         <!-- END BUTTON -->
 
         <!-- START FORM -->
-        <form action="" class="mt-3 p-4 shadow" @submit.prevent="inputKartuKeluarga" v-show="!success">
+        <form action="" class="mt-3 p-4 shadow" @submit.prevent="inputKartuKeluarga">
             <div class="d-flex">
                 <div class="col-md-6 p-3">
                     <!-- Input KK -->
@@ -102,21 +102,21 @@
         <!-- END FORM -->
 
         <!-- Alert Sucess Submit -->
-        <div class="" v-show="success">
+        <!-- <div class="" v-show="success">
             <Success :propsAlert="textAlert"></Success>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
 import kartuKeluargaService from "../services/kkServices";
-import Success from "../components/Success.vue";
+// import Success from "../components/Success.vue";
 
 export default {
     name: "FormS",
-    components: {
-        Success,
-    },
+    // components: {
+    //     Success,
+    // },
 
     data() {
         return {
@@ -133,14 +133,14 @@ export default {
             },
             Butns: this.$route.path,
             buttonValue: "Submit",
-            success: false,
             isReadOnly: true,
             kkNo: true,
             btnDetail: 'Tambah',
             showBtn: false,
-            textAlert: '',
             validasiKK: false,
             btnVal: "Edit",
+            // success: false,
+            // textAlert: '',
         };
     },
 
@@ -155,8 +155,17 @@ export default {
                     .create(data)
                     .then((response) => {
                         console.log(response.data);
-                        this.success = true;
-                        this.textAlert = 'Disubmit';
+                        // this.success = true;
+                        // this.textAlert = 'Disubmit';
+                        this.$swal({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Data Kartu Keluarga Telah Dikirim !',
+                            showConfirmButton: true,
+                            timer: 2500
+                        }).then(function () {
+                            location.reload();
+                        })
                     })
                     .catch((e) => {
                         let errorEntry = e.response.data.trace.includes("Duplicate entry");
@@ -172,8 +181,8 @@ export default {
                     .updateKartuKeluarga(id, data)
                     .then((response) => {
                         console.log(response.data);
-                        this.textAlert = 'Diupdate';
-                        this.success = true;
+                        // this.textAlert = 'Diupdate';
+                        // this.success = true;
                         this.Butns = false;
                     })
                     .catch((e) => {
@@ -272,6 +281,4 @@ form {
     padding-left: 2px;
     margin-right: 2px;
 }
-
-
 </style>

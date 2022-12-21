@@ -12,7 +12,7 @@
                 <div class="back">
                     <div class="text">
                         <img class="backImg" src="../assets/ilustrasi-1.svg" alt=""
-                            style="width: 340px; height: auto; margin-bottom: 50px" />
+                            style="width: 340px; height: auto; margin-bottom: 100px" />
                     </div>
                 </div>
             </div>
