@@ -7,18 +7,14 @@
                     <div class="text d-flex">
                         <img class="ilustrasi" src="../assets/ilustrasi-3.svg" alt=""
                             style="width: 270px; height: auto; margin-bottom: 150px" />
-                        <span class="text-1 text-white" style="margin-top: 280px">Halo Selamat Datang <br />
-                            Sudah Pernah Daftar?</span>
-                        <span class="text-2 mt-3 text-white">Silahkan Login</span>
+
                     </div>
                 </div>
                 <div class="back">
                     <div class="text">
                         <img class="backImg" src="../assets/ilustrasi-1.svg" alt=""
                             style="width: 340px; height: auto; margin-bottom: 150px" />
-                        <span class="text-1 text-white" style="margin-top: 280px">Halo Selamat Datang <br />
-                            Belum Punya Akun?</span>
-                        <span class="text-2 mt-3 text-white">Silahkan Daftar</span>
+
                     </div>
                 </div>
             </div>
