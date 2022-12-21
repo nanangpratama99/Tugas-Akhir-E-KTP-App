@@ -66,7 +66,8 @@
                         <form ref="form" @submit="handleOk">
                             <!-- NIK -->
                             <b-form-group class="mt-2" label="NIK" label-for="nik" invalid-feedback="NIK is required">
-                                <b-form-input type="number" id="nik" v-model="anggotaData.nik" required></b-form-input>
+                                <b-form-input class="input-field" type="number" id="nik" v-model="anggotaData.nik"
+                                    required></b-form-input>
                             </b-form-group>
 
                             <!-- NAMA -->

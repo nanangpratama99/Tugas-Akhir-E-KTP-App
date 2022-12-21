@@ -11,11 +11,11 @@
 
                 <router-link :to="{ path: '/detailKK/' + this.$route.params.no_kk + '/listAnggota/' }"
                     v-else-if="propsAlert === 'Disubmit '">
-                    <button class="back btn btn-primary mt-3" @click="RefreshFunc">Back</button>
+                    <button class="back btn btn-primary mt-3" @click="RefreshFunc">Kembali</button>
                 </router-link>
 
                 <router-link to="/home" v-else-if="propsAlert === 'Dihapus'">
-                    <button class="back btn btn-primary mt-3" @click="RefreshFunc">Refles</button>
+                    <button class="back btn btn-primary mt-3" @click="RefreshFunc">Refresh</button>
                 </router-link>
                 <router-link to="/home" v-elss>
                     <!-- <button class="back btn btn-primary mt-3" @click="RefreshFunc">Refles</button> -->

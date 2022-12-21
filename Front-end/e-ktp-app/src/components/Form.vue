@@ -28,7 +28,7 @@
                     <div class="col-auto d-flex justify-content-between my-3">
                         <label for="nomorkk" class="col-form-label">Nomor Kartu Keluarga</label>
                         <input :disabled="kkNo" v-model="kartuKeluargaData.nomor_kk" placeholder="Nomor Kartu Keluarga"
-                            style="width: 50%" type="number" id="nomorkk" class="form-control" required />
+                            style="width: 50%" type="number" id="nomorkk" class="form-control input-field" required />
                     </div>
 
                     <!-- Alamat -->
@@ -42,14 +42,14 @@
                     <div class="col-auto d-flex justify-content-between my-3">
                         <label for="rt" class="col-form-label">RT</label>
                         <input :disabled="isReadOnly" v-model="kartuKeluargaData.rt" placeholder="RT" style="width: 50%"
-                            type="number" id="rt" class="form-control" required />
+                            type="number" id="rt" class="form-control input-field" required />
                     </div>
 
                     <!-- RW -->
                     <div class="col-auto d-flex justify-content-between my-3">
                         <label for="rW" class="col-form-label">RW</label>
                         <input :disabled="isReadOnly" v-model="kartuKeluargaData.rw" placeholder="RW" style="width: 50%"
-                            type="number" id="rW" class="form-control" required />
+                            type="number" id="rW" class="form-control input-field" required />
                     </div>
                 </div>
                 <div class="col-md-6 p-3">
@@ -85,7 +85,7 @@
                     <div class="col-auto d-flex justify-content-between my-3">
                         <label for="kode_pos" class="col-form-label">Kode Pos</label>
                         <input :disabled="isReadOnly" v-model="kartuKeluargaData.kode_pos" placeholder="Kode Pos"
-                            style="width: 50%" type="number" id="kode_pos" class="form-control" required />
+                            style="width: 50%" type="number" id="kode_pos" class="form-control input-field" required />
                     </div>
                 </div>
             </div>
@@ -272,4 +272,6 @@ form {
     padding-left: 2px;
     margin-right: 2px;
 }
+
+
 </style>

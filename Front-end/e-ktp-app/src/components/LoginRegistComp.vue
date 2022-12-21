@@ -6,15 +6,13 @@
                 <div class="front">
                     <div class="text d-flex">
                         <img class="ilustrasi" src="../assets/ilustrasi-3.svg" alt=""
-                            style="width: 270px; height: auto; margin-bottom: 150px" />
-
+                            style="width: 270px; height: auto; margin-bottom: 50px" />
                     </div>
                 </div>
                 <div class="back">
                     <div class="text">
                         <img class="backImg" src="../assets/ilustrasi-1.svg" alt=""
-                            style="width: 340px; height: auto; margin-bottom: 150px" />
-
+                            style="width: 340px; height: auto; margin-bottom: 50px" />
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
     <!-- TABLE START -->
     <table class="table mt-3 table table-striped shadow">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th scope="col">No</th>
                 <th scope="col">Nomor KK</th>
                 <th scope="col">NIK</th>
@@ -15,21 +15,21 @@
         </thead>
         <tbody v-if="anggotaData.length > 0">
             <tr v-for="(item, index) in anggotaData" :key="index">
-                <th scope="row">{{ index + 1 }}</th>
-                <td>{{ item.nik }}</td>
+                <th scope="row" class="text-center">{{ index + 1 }}</th>
+                <td style="width:100px">{{ item.nik }}</td>
                 <td>{{ item.id_kk }}</td>
                 <td>{{ item.nama }}</td>
                 <td>{{ item.agama }}</td>
                 <td>{{ item.pendidikan }}</td>
-                <td>{{ item.jenis_kelamin }}</td>
+                <td style="width:150px">{{ item.jenis_kelamin }}</td>
                 <td>
-                    <button class="btn btn-danger" type="submit" @click="deleteAnggota(item.id)">Hapus</button>
+                    <button class=" btn btn-danger" type="submit" @click="deleteAnggota(item.id)">Hapus</button>
                 </td>
             </tr>
         </tbody>
         <tbody v-else>
             <tr>
-                <td colspan="6" class="text-center">
+                <td colspan="8" class="text-center">
                     <h4 class="text-center msg-agt">Data Anggota Keluarga Belum Ditambahkan</h4>
                 </td>
             </tr>
@@ -89,5 +89,18 @@ export default {
 .table {
     margin-left: 20px;
     width: 95%;
+}
+
+thead tr th {
+    font-weight: 600;
+}
+
+td {
+    border: 0.5px solid rgb(42, 42, 42);
+}
+
+thead {
+    background: #4B56D2;
+    color: aliceblue;
 }
 </style>

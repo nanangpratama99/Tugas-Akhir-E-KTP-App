@@ -4,7 +4,6 @@
             <Sidebar></Sidebar>
         </div>
         <div class="col col-md-9 ml-5">
-            <h3 class="mt-4 title shadow">Daftar Anggota Keluarga</h3>
             <DaftarAnggota></DaftarAnggota>
         </div>
         <div class="col col-md-3"></div>

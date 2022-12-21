@@ -1,37 +1,39 @@
 <template>
-    <!-- TABLE START -->
-    <table class="table mt-3 table table-striped shadow">
-        <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">NIK</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Kepala Keluarga</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody v-if="anggotaData.length > 0">
-            <tr v-for="(item, index) in anggotaData" :key="index">
-                <th scope="row">{{ index + 1 }}</th>
-                <td>{{ item.nik }}</td>
-                <td>{{ item.nama }}</td>
-                <td>{{ item.jenis_kelamin }}</td>
-                <td>{{ item.kepala_keluarga }}</td>
-                <td>
-                    <button class="btn btn-danger" type="submit" @click="deleteAnggota(item.id)">Hapus</button>
-                </td>
-            </tr>
-        </tbody>
-        <tbody v-else>
-            <tr>
-                <td colspan="6">
-                    <h4 class="text-center msg-agt">Data Anggota Keluarga Belum Ditambahkan</h4>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- TABLE END -->
+    <div>
+        <!-- TABLE START -->
+        <table class="table mt-3 table table-striped shadow">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">NIK</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">Kepala Keluarga</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody v-if="anggotaData.length > 0">
+                <tr v-for="(item, index) in anggotaData" :key="index">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ item.nik }}</td>
+                    <td>{{ item.nama }}</td>
+                    <td>{{ item.jenis_kelamin }}</td>
+                    <td>{{ item.kepala_keluarga }}</td>
+                    <td>
+                        <button class="btn btn-danger" type="submit" @click="deleteAnggota(item.id)">Hapus</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody v-else>
+                <tr>
+                    <td colspan="6">
+                        <h4 class="text-center msg-agt">Data Anggota Keluarga Belum Ditambahkan</h4>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- TABLE END -->
+    </div>
 </template>
 
 <script>
