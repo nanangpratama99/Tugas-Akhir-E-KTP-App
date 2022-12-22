@@ -177,7 +177,7 @@ export default {
                         this.$swal({
                             position: 'top',
                             icon: 'success',
-                            title: 'Data Kartu Keluarga Telah Dikirim !',
+                            title: 'Data Anggota Keluarga Telah Dikirim !',
                             showConfirmButton: true,
                             timer: 2000
                         }).then(function () {

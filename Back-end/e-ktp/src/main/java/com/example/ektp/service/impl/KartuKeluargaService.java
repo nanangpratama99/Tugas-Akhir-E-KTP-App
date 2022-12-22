@@ -33,9 +33,9 @@ public class KartuKeluargaService implements IKartuKeluargaService {
     }
 
     @Override
-    public KartuKeluarga deleteKartuKeluarga(int id) {
+    public KartuKeluarga deleteKartuKeluarga(int nomor_kk) {
         // TODO Auto-generated method stub
-        return kartuKeluargaRepository.deleteKartuKeluarga(id);
+        return kartuKeluargaRepository.deleteKartuKeluarga(nomor_kk);
     }
 
     @Override

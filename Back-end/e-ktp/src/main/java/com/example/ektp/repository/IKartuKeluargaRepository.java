@@ -11,7 +11,7 @@ public interface IKartuKeluargaRepository {
 
     public KartuKeluarga updateKartuKeluarga(int id, KartuKeluarga kartuKeluarga);
 
-    public KartuKeluarga deleteKartuKeluarga(int id);
+    public KartuKeluarga deleteKartuKeluarga(int nomor_kk);
 
     public KartuKeluarga getKartuKeluargaById(int id);
 

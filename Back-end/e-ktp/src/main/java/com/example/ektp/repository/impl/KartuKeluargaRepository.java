@@ -50,13 +50,13 @@ public class KartuKeluargaRepository implements IKartuKeluargaRepository {
     }
 
     @Override
-    public KartuKeluarga deleteKartuKeluarga(int id) {
+    public KartuKeluarga deleteKartuKeluarga(int nomor_kk) {
         // TODO Auto-generated method stub
-        String query = "SELECT * FROM tb_kartu_keluarga WHERE id = ?";
-        var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(KartuKeluarga.class), id);
+        String query = "SELECT * FROM tb_kartu_keluarga WHERE nomor_kk = ?";
+        var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(KartuKeluarga.class), nomor_kk);
 
-        query = "DELETE FROM tb_kartu_keluarga WHERE id = ?";
-        jdbcTemplate.update(query, id);
+        query = "DELETE FROM tb_kartu_keluarga WHERE nomor_kk = ?";
+        jdbcTemplate.update(query, nomor_kk);
 
         return result;
     }

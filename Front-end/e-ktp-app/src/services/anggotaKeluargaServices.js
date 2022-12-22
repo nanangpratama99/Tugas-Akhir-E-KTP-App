@@ -22,6 +22,10 @@ class AnggotaKeluarga {
         return http.delete(`/anggotakeluarga/delete/${id}`);
     }
 
+    deleteAnggotaKeluargaNoKK(id_kk) {
+        return http.delete(`/anggotakeluarga/deleted/${id_kk}`);
+    }
+
     getAnggotaKeluargaById(id) {
         return http.get(`/anggotakeluarga/getData/${id}`)
     }

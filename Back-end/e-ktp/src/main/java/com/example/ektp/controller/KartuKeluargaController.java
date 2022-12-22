@@ -38,9 +38,9 @@ public class KartuKeluargaController {
         return kartuKeluargaService.updateKartuKeluarga(id, kartuKeluarga);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public KartuKeluarga deleteKartuKeluarga(@PathVariable int id) {
-        return kartuKeluargaService.deleteKartuKeluarga(id);
+    @DeleteMapping("/delete/{nomor_kk}")
+    public KartuKeluarga deleteKartuKeluarga(@PathVariable int nomor_kk) {
+        return kartuKeluargaService.deleteKartuKeluarga(nomor_kk);
     }
 
     @GetMapping("/getData/{id}")

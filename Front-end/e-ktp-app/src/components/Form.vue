@@ -158,7 +158,7 @@ export default {
                         // this.success = true;
                         // this.textAlert = 'Disubmit';
                         this.$swal({
-                            position: 'top-end',
+                            position: 'top',
                             icon: 'success',
                             title: 'Data Kartu Keluarga Telah Dikirim !',
                             showConfirmButton: true,

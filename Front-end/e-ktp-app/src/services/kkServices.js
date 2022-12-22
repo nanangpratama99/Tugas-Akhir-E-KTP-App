@@ -18,8 +18,8 @@ class KK {
         return http.put(`/kk/updateKK/${nomor_kk}`, data);
     }
 
-    deleteKartuKeluarga(id) {
-        return http.delete(`/kk/delete/${id}`);
+    deleteKartuKeluarga(nomor_kk) {
+        return http.delete(`/kk/delete/${nomor_kk}`);
     }
 
     getKartuKelurgaById(id) {
